@@ -1,0 +1,20 @@
+export { BankRegisters } from './bank-register/bank-register';
+export { Customers } from './customers/customers';
+export { Cities } from './cities/cities';
+export { Counties } from './counties/counties';
+export { Drivers } from './drivers/drivers';
+export { PmtBoardings } from './pmt-boardings/pmt-boardings';
+export { PmtBookings } from './pmt-bookings/pmt-bookings';
+export { PmtReservations } from './pmt-reservations/pmt-reservations';
+export { PmtRoutes } from './pmt-routes/pmt-routes';
+export { PmtSchedules } from './pmt-schedules/pmt-schedules';
+export { PmtWaybills } from './pmt-waybills/pmt-waybills';
+export { Ratings } from './ratings/ratings';
+export { Settings } from './settings/settings';
+export { Staffs } from './staffs/staffs';
+export { States } from './states/states';
+export { Terminals } from './terminals/terminals';
+export { Vehicles } from './vehicles/vehicles';
+export { Messages } from './messages/messages';
+export { Notifications } from './notifications/notifications';
+
