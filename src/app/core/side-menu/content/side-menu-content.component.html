@@ -134,6 +134,20 @@
       <span class="menu-item-title">Tabs</span>
     </a>
   </mat-expansion-panel>
+
+
+    <a *ngFor="let menuItem of menuItems"  class="simple-menu-item" [routerLinkActive]="['active']" [routerLink]="[menuItem.path]">
+      <i class="menu-item-icon {{ menuItem.icon }}"></i>
+      <span class="menu-item-title">{{ menuItem.title }}</span>
+    </a>
+
+    <!--Exit-->
+    <a class="simple-menu-item" [routerLinkActive]="['active']" [routerLink]="['/login']">
+      <i class="menu-item-icon fa fa-power-off"></i>
+      <span class="menu-item-title">Exit</span>
+    </a>
+
+    
 </app-condense>
 <div class="condense-toggle-wrapper" [ngClass]="{'condensed': condenseMenu.menuState == 'condensed'}">
   <span (click)="condenseMenu.toggleState()" class="condense-toogle"></span>

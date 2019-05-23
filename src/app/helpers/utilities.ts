@@ -81,7 +81,9 @@ export function hasProp(obj, prop) {
 }
 
 export function isObjecId(id) {
-    if (id.match(/^[0-9a-fA-F]{24}$/)) return true;
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        return true
+    };
     return false;
 }
 
@@ -145,15 +147,20 @@ function daysIntoYear(date = new Date()) {
 export function genCode(len = 9) {
     let d = new Date().getFullYear().toString().substr(-2);
     d += daysIntoYear();
-    if (len - d.length > 0) return d + genString(len - d.length);
+    if (len - d.length > 0) {
+        return d + genString(len - d.length);
+    }
     return genString(len);
 }
 
 export function hasNull(Obj = {}) {
     const val = Object.values(Obj);
-    if (val.includes(null) || val.includes(undefined) || val.includes('')) return true;
+    if (val.includes(null) || val.includes(undefined) || val.includes('')) {
+        return true;
+    }
     return false;
 }
+
 
 /**
  * @description Set a local storage value with expired date, if expires is not set
@@ -185,6 +192,7 @@ export function setLocalStorage(name, value, expires) {
     }
 }
 
+
 /**
  *
  * @param {String} name name (key) to retrieve the data set
@@ -213,6 +221,7 @@ export function getLocalStorage(name) {
         }
     }
 }
+
 
 /**
  *
