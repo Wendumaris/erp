@@ -1,0 +1,45 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> PMT City</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+              <div class="input-group no-border">
+                <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                  </div>
+                </div>
+              </div>
+            </form> 
+            <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+              <table class="table table-condensed table-responsive-sm rounded">
+                <thead class="text-primary">
+                  <th class="text-left">SN</th>
+                  <th>Name</th>
+                  <th>State</th>
+                  <th class="text-center">Terminals</th>
+                </thead>
+                <tbody>
+                <tr  *ngFor="let record of currentRecords; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ record.name }}</td>
+                  <td><a routerLink="/state/detail/{{record.state_id?.id}}">{{ record.state_id?.name }}</a></td>
+                  <td class="text-center"> 0 </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

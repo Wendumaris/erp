@@ -5,7 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss'],
+  styleUrls: ['./admin-layout.component.scss', '../../styles/app.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class AdminLayoutComponent implements AfterContentInit {

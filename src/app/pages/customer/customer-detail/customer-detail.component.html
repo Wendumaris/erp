@@ -1,0 +1,30 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Customer Detail</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"><th>Property</th><th>Value</th></thead>
+                  <tbody>
+                  <tr><th>Name</th><td>{{ record?.surname || '' }}</td></tr>
+                  <tr><th>Gender</th><td>{{ record?.gender || '' }}</td></tr>
+                  <tr><th>Email</th><td>{{ record?.email || '' }}</td></tr>
+                  <tr><th>Phone</th><td>{{ record?.phone || '' }}</td></tr>
+                  <tr><th>Address</th><td>{{ record?.address || '' }}</td></tr>
+                  <tr><th>Contact person</th><td>{{ record?.contact_person || '' }}</td></tr>
+                  <tr><th>Contact person's phone</th><td>{{ record?.contact_person_phone || '' }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

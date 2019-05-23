@@ -1,0 +1,115 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Route </h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+            <div class="input-group no-border">
+              <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+          </form> 
+          <div class="pull-right">
+              <button type="button" (click)="goToAdd(record)" rel="tooltip" title="New Record" class="btn btn-success btn-round btn-sm">
+                  <i class="now-ui-icons ui-1_simple-add"></i> 
+                </button>
+          </div>
+          <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+            <table class="table table-condensed table-responsive-sm">
+              <thead class="text-primary">
+              <tr>
+                <th class="text-left">SN</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Fare1</th>
+                <th>Fare2</th>
+                <th>Fuel1</th>
+                <th>Fuel2</th>
+                <th>Allowance</th>
+                <th class="text-right">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let record of currentRecords; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ record.name }}</td>
+                <td>{{ record.category }}</td>
+                <td>{{ record.fare_class1 }}</td>
+                <td>{{ record.fare_class2 }}</td>
+                <td>{{ record.fuel_litres_class1 }}</td>
+                <td>{{ record.fuel_litres_class2 }}</td>
+                <td>{{ record.driver_allowance }}</td>
+    
+                <td class="td-actions text-right">
+                    <button type="button" routerLink="/pmt-route/detail/{{record.id}}" rel="tooltip" title="View Detail" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                      <i class="now-ui-icons travel_info"></i>
+                    </button>
+                    <button type="button" (click)="goToEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" (click)="removeRecord(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Routes</h4>
+          <p class="category"> Routes originiating from this terminal</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Fare1</th>
+                  <th>Fare2</th>
+                  <th>Fuel1</th>
+                  <th>Fuel2</th>
+                  <th>Allowance</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Enugu Okpara Ave. => Nsukka</td>
+                  <td>Local</td>
+                  <td>500</td>
+                  <td>400</td>
+                  <td>2400</td>
+                  <td>1400</td>
+                  <td>1000</td>
+                </tr>
+                <tr>
+                  <td>Enugu Okpara Ave. => Nsukka</td>
+                  <td>Local</td>
+                  <td>500</td>
+                  <td>400</td>
+                  <td>2400</td>
+                  <td>1400</td>
+                  <td>1000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

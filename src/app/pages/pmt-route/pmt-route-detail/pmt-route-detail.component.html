@@ -1,0 +1,37 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">PMT Route Detail</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"><th>Property</th><th>Value</th></thead>
+                  <tbody>
+                  <tr><th>Name</th><td>{{ record?.name || '' }}</td></tr>
+                  <tr><th>Terminal From</th><td>{{ record.terminal1_id?.name || '' }}</td></tr>
+                  <tr><th>Terminal To</th><td>{{ record.terminal2_id?.name || '' }}</td></tr>
+                  <tr><th>Category</th><td>{{ record?.category || '' }}</td></tr>
+                  <tr><th>Fare Class1</th><td>{{ record?.fare_class1 || '' }}</td></tr>
+                  <tr><th>Fare Class2</th><td>{{ record?.fare_class2 || '' }}</td></tr>
+                  <tr><th>Fuel Class1</th><td>{{ record?.fuel_litres_class1 || '' }}</td></tr>
+                  <tr><th>Fuel Class2</th><td>{{ record?.fuel_litres_class2 || '' }}</td></tr>
+                  <tr><th>Distance</th><td>{{ record?.distance || '' }}</td></tr>
+                  <tr><th>Driver's Allowance</th><td>{{ record?.driver_allowance || '' }}</td></tr>
+                  <tr><th>Journey Duration</th><td>{{ record?.duration || '' }}</td></tr>
+                  <tr><th>Number of Trip</th><td>{{ record?.trips || '' }}</td></tr>
+                  <tr><th>Is Reservable</th><td>{{ record?.is_reservale || '' }}</td></tr>
+                  <tr><th>Is Available</th><td>{{ record?.is_available || '' }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

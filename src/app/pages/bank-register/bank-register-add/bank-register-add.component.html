@@ -1,0 +1,76 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Add BankRegister by {{ getName(user) }} </h5>
+            <div class="text-right">
+                <button class="btn btn-sm btn-primary" style="width:100px" (click)="goBack()"><i
+                    class="fa fa-reply"></i></button>
+              </div>
+          </div>
+          <div class="card-body">
+              
+              <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+                <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                      <label for="transaction_date" class="control-label required">Transaction date *</label>
+                      <input type="date" class="form-control" formControlName="transaction_date" id="transaction_date"
+                      placeholder="YYYY-MM-DD" required>
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label for="amount_realized" class="control-label required">Amount Realized *</label>
+                    <input type="number" class="form-control" id="amount_realized" formControlName="amount_realized" placeholder="0.00" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label for="deposited_date" class="control-label">Deposited date</label>
+                    <input type="date" class="form-control" formControlName="deposited_date" id="deposited_date" placeholder="YYYY-MM-DD">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label for="amount_deposited" class="control-label required">Amount deposited *</label>
+                    <input type="number" class="form-control" formControlName="amount_deposited" id="amount_deposited" placeholder="Amount deposited" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label for="teller" class="control-label required">Teller Number*</label>
+                    <input type="text" class="form-control" formControlName="teller" id="teller" placeholder="teller" required>
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label for="teller" class="control-label required">Transaction code*</label>
+                    <input type="text" class="form-control" formControlName="transaction_code" id="transaction_code" placeholder="ABX2HT5" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-12 text-center">
+                      <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid || loading">Submit
+                        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                      </button>
+                  </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

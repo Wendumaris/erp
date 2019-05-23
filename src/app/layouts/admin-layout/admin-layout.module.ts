@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
@@ -14,6 +15,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
+    NgbModule,
   ],
   declarations: [
     

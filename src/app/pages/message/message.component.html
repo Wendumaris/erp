@@ -1,0 +1,101 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> Message Table</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+              <div class="input-group no-border">
+                <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                  </div>
+                </div>
+              </div>
+            </form> 
+            <div class="pull-right">
+                <button type="button" (click)="goToAdd(record)" rel="tooltip" title="New Record" class="btn btn-success btn-round btn-sm">
+                    <i class="now-ui-icons ui-1_simple-add"></i> 
+                  </button>
+            </div>
+            <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+              <table class="table table-condensed table-responsive-sm">
+                <thead class="text-primary">
+                <tr>
+                  <th class="text-left">SN</th>
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Contact Person / Kin</th>
+                  <th class="text-right">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  *ngFor="let record of currentRecords; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ getName(record) }}</td>
+                  <td>{{ record.phone }} {{ record.personal_phone }}</td>
+                  <td>{{ record.email }}</td>
+                  <td>{{ record.contact_person }} {{ record.contact_person_phone }}</td>
+      
+                  <td class="td-actions text-right">
+                      <button type="button" routerLink="/message/detail/{{record.id}}" rel="tooltip" title="View Detail" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                        <i class="now-ui-icons travel_info"></i>
+                      </button>
+                      <button type="button" (click)="goToEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                        <i class="now-ui-icons ui-2_settings-90"></i>
+                      </button>
+                      <button type="button" (click)="removeRecord(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                      </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> New Passengers</h4>
+            <p class="category"> Passengers registered today</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Contact Person / Kin</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mike Rice</td>
+                    <td>090272827282</td>
+                    <td>mike@testmet.com</td>
+                    <td>Aunt Susan, 9708066788</td>
+                  </tr>
+                  <tr>
+                    <td>Nnekka Grace</td>
+                    <td>090270827282</td>
+                    <td>nneka@testmet.com</td>
+                    <td>Uncle UChe, 09708066788</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,144 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> Bank Register - This Week</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+              <div class="input-group no-border">
+                <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                  </div>
+                </div>
+              </div>
+            </form> 
+            <div class="pull-right">
+                <button type="button" (click)="goToAdd(record)" rel="tooltip" title="New Record" class="btn btn-success btn-round btn-sm">
+                    <i class="now-ui-icons ui-1_simple-add"></i> 
+                  </button>
+            </div>
+            <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+              <table class="table table-condensed table-responsive-sm">
+                <thead class="text-primary">
+                <tr>
+                  <th class="text-left">SN</th>
+                  <th>Transaction Date</th>
+                  <th>Depositor</th>
+                  <th>Amount Realized</th>
+                  <th>Amount Deposited</th>
+                  <th>Deposite Date</th>
+                  <th>Teller</th>
+                  <th>Transaction Code</th>
+                  <th class="text-right">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  *ngFor="let record of currentRecords; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ record.transaction_date }}</td>
+                  <td>{{ getName(record.depositor_id) }}</td>
+                  <td>{{ record.amount_realized | currency }}</td>
+                  <td>{{ record.amount_deposited | currency }}</td>
+                  <td>{{ record.deposited_date | date }}</td>
+                  <td>{{ record.teller }}</td>
+                  <td>{{ record.transaction_code }}</td>      
+                  <td class="td-actions text-right">
+                      <button type="button" routerLink="/bank-register/detail/{{record.id}}" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                        <i class="now-ui-icons travel_info"></i>
+                      </button>
+                      <button type="button" (click)="goToEdit(record)" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                        <i class="now-ui-icons ui-2_settings-90"></i>
+                      </button>
+                      <button type="button" (click)="removeRecord(record)" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                        <i class="now-ui-icons ui-1_simple-remove"></i>
+                      </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card card-plain">
+          <div class="card-header">
+            <h4 class="card-title"> Bank Register - Last Week</h4>
+            <p class="category"> Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                    <th class="text-left">SN</th>
+                    <th>Transaction Date</th>
+                    <th>Depositor</th>
+                    <th>Realized</th>
+                    <th>Deposited</th>
+                    <th>Deposite Date</th>
+                    <th>Teller</th>
+                    <th>Transaction</th>
+                    <th class="text-right">Action</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>2019-05-25</td>
+                    <td>Mrs Mirabel Ngozi (f)</td>
+                    <td>23,000,090</td>
+                    <td>23,000,090</td>
+                    <td>2019-05-25</td>
+                    <td>1122201977725</td>
+                    <td>AD222FC77ER5</td>
+                    <td class="text-right">
+                        <button type="button" routerLink="/bank-register" rel="tooltip" title="View Detail" class="btn btn-sm btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                          <i class="now-ui-icons travel_info"></i>
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>2019-05-25</td>
+                    <td>Mr Eric Nickson (m)</td>
+                    <td>23,000,090</td>
+                    <td>23,000,090</td>
+                    <td>2019-05-25</td>
+                    <td>1122201977725</td>
+                    <td>AD222FC77ER5</td>
+                    <td class="text-right">
+                        <button type="button" routerLink="/bank-register" rel="tooltip" title="View Detail" class="btn btn-sm btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                          <i class="now-ui-icons travel_info"></i>
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>2019-05-25</td>
+                    <td>Mrs Mirabel Ngozi (f)</td>
+                    <td>23,000,090</td>
+                    <td>23,000,090</td>
+                    <td>2019-05-25</td>
+                    <td>1122201977725</td>
+                    <td>AD222FC77ER5</td>
+                    <td class="text-right">
+                        <button type="button" routerLink="/bank-register" rel="tooltip" title="View Detail" class="btn btn-sm btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                          <i class="now-ui-icons travel_info"></i>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

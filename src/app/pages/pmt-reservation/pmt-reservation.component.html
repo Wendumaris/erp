@@ -1,0 +1,112 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Pending Customer Reservation</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+            <div class="input-group no-border">
+              <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+          </form> 
+
+          <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+            <table class="table table-condensed table-responsive-sm">
+              <thead class="text-primary">
+              <tr>
+                <th class="text-left">SN</th>
+                <th>Code</th>
+                <th>Customer</th>
+                <th>Schedule</th>
+                <th>Route</th>
+                <th>Seat</th>
+                <th>Payment</th>
+                <th>Reservation</th>
+                <th class="text-right">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let record of currentRecords; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ record.transaction_code }}</td>
+                <td>{{ getName(record.customer_id) }}</td>
+                <td>{{ record.pmt_schedule_id?.vehicle.name }} @ {{ record.pmt_schedule_id?.departure_date }}</td>
+                <td>{{ record.seat_quantity }} [{{ record.seat_positions }}]</td>
+                <td>{{ record.payment_status }}{{ record.payment_method }}{{ record.payment_gateway }}</td>
+                <td>{{ record.reservation_status }}</td>
+                <td class="td-actions text-right">
+                  <button type="button" routerLink="/pmt-reservation/detail/{{record.id}}" rel="tooltip" title="View Detail" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                    <i class="now-ui-icons travel_info"></i>
+                  </button>
+                  <button type="button" (click)="goToEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                  </button>
+                  <button type="button" (click)="removeRecord(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+          </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title">Closed Reservations</h4>
+          <p class="category"> PMT Reservation Status: Boarded</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th class="text-left">SN</th>
+                <th>Code</th>
+                <th>Customer</th>
+                <th>Schedule</th>
+                <th>Route</th>
+                <th>Seat(s)</th>
+                <th>Payment</th>
+                <th>Reservation</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>QWT9027282PL82</td>
+                  <td>Aunt Susan, 9708066788</td>
+                  <td>PMT2012 @ 2019-05-19 8:30</td>
+                  <td>Enugu, Okpara Ave. => Nsukka</td>
+                  <td>2 [7,8]</td>
+                  <td>Successful USSD UNIONBANK</td>
+                  <td>Boarded</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>ABG7282PL82</td>
+                  <td>Friday Obinna, 0908066788</td>
+                  <td>PMT2012 @ 2019-05-19 8:30</td>
+                  <td>Onitsha, Awka Rd. => Enugu, Okpara Ave.</td>
+                  <td>4 [2, 9, 11, 16]</td>
+                  <td>Successful USSD UNIONBANK</td>
+                  <td>Boarded</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">PMT Waybill Detail</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"><th>Property</th><th>Value</th></thead>
+                  <tbody>
+                      <tr><th>	Boarding	</th><td>{{ record.pmt_boarding_ids?.length	|| '' }}</td></tr>
+                      <tr><th>	Driver	</th><td>{{ record?.driver_id	|| '' }}</td></tr>
+                      <tr><th>	Vehicle	</th><td>{{ record?.vehicle_id	|| '' }}</td></tr>
+                      <tr><th>	Schedule	</th><td>{{ record?.pmt_schedule_id	|| '' }}</td></tr>
+                      <tr><th>	Route	</th><td>{{ record?.pmt_route_id	|| '' }}</td></tr>
+                      <tr><th>	Fare total	</th><td>{{ record?.fare_total	|| '' }}</td></tr>
+                      <tr><th>	Fuel amount	</th><td>{{ record?.fuel_amount	|| '' }}</td></tr>
+                      <tr><th>	Driver Allowance	</th><td>{{ record?.driver_allowance	|| '' }}</td></tr>
+                      <tr><th>	Is_DTO	</th><td>{{ record?.is_dto	|| '' }}</td></tr>
+                      <tr><th>	DTO Maintenance	</th><td>{{ record?.dto_maintenance	|| '' }}</td></tr>
+                      <tr><th>	DTO Repayment	</th><td>{{ record?.dto_repayment	|| '' }}</td></tr>
+                      <tr><th>	DTO Service_charge	</th><td>{{ record?.dto_service_charge	|| '' }}</td></tr>
+                      <tr><th>	Departure_date	</th><td>{{ record?.departure_date	|| '' }}</td></tr>
+                      <tr><th>	Authorized_by	</th><td>{{ record?.authorized_by	|| '' }}</td></tr>
+                      <tr><th>	Authorized_date	</th><td>{{ record?.authorized_date	|| '' }}</td></tr>
+                      <tr><th>	Boarding_status	</th><td>{{ record?.boarding_status	|| '' }}</td></tr>
+                      <tr><th>	Is_authorized	</th><td>{{ record?.is_authorized	|| '' }}</td></tr>
+                      <tr><th>	Remark	</th><td>{{ record?.remark	|| '' }}</td></tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary">
+                  <th>SN</th>
+                  <th>Passenger</th>
+                  <th>Phone</th>
+                  <th>Destination</th>
+                  <th>Seat</th>
+                  <th>Fare</th>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let boarding of record.pmt_boarding_ids; let j = index">
+                        <td>{{ j + 1 }}</td>
+                        <td>{{ getName(boarding.customer_id) }}</td>
+                        <td>{{ boarding.customer_id?.phone }}</td>
+                        <td>{{ boarding.destination }}</td>
+                        <td>{{ boarding.seat_quantity }} [{{ boarding.seat_positions }}]</td>
+                        <td>{{ record.fare }}</td>
+                        <td class="td-actions text-right">
+                            <button type="button" (click)="goToEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                              <i class="now-ui-icons ui-2_settings-90"></i>
+                            </button>
+                            <button type="button" (click)="removeRecord(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                              <i class="now-ui-icons ui-1_simple-remove"></i>
+                            </button>
+                          </td>
+                      </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  

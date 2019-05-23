@@ -1,0 +1,65 @@
+<div class="main-bg">
+  <div class="modal-login">
+
+    <div class="modal-login-form" *ngIf="form === 'login'; else register">
+      <div class="brand-logo">
+          <img src="/assets/imgs/logo.png" width="50" height="50" 
+          [ngStyle]="{ marginTop: '20px', borderRadius: '50%' }" />
+      </div>
+      <h2 class="modal-title">SIGN IN</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" name="email" id="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small
+            *ngIf="loginForm.controls.email.touched && !loginForm.controls.email.valid" class="form-text text-danger">
+            The email address is not valid
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" formControlName="password"  placeholder="Password">
+          <small
+            *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid" class="form-text text-danger">
+            Password is required
+          </small>
+        </div>
+        <a href="javascript:void(0)" class="recover-password">
+          Forgot email or password?
+        </a>
+        <div class="login-btns">
+          <button type="submit" class="form-control btn btn-signin" [disabled]="!this.loginForm.valid">
+            SIGN IN</button>
+        </div>
+      </form>
+      <div class="login-divider">
+        <hr class="line"><span>OR</span><hr class="line">
+      </div>
+      <input type="button" (click)="toggleForm()" class="form-control btn btn-register" value="REGISTER">
+    </div>
+
+    <ng-template #register>
+      <div class="modal-login-form">
+        <div class="brand-logo">
+          <app-preload-image [ratio]="{w:1, h:1}" src='assets/imgs/angular.svg' alt="Peace"></app-preload-image>
+        </div>
+        <h2 class="modal-title">REGISTER</h2>
+        <form class="form-horizontal">
+          <input type="text" class="form-control" placeholder="EMAIL">
+          <input type="password" class="form-control" placeholder="PASSWORD">
+          <div class="login-btns">
+            <input type="submit" class="form-control btn btn-signin" value="REGISTER">
+          </div>
+        </form>
+        <div class="login-divider">
+          <hr class="line"><span>OR</span><hr class="line">
+        </div>
+        <input type="button" (click)="toggleForm()" class="form-control btn btn-register" value="SIGN IN">
+      </div>
+    </ng-template>
+
+    <div class="modal-login-image hidden-xs">
+      <div class="background-image"></div>
+    </div>
+  </div>
+</div>

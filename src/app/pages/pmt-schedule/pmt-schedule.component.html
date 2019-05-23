@@ -1,0 +1,152 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Schedule - Today</h4>
+        </div>
+        <div class="card-body">
+          
+          <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+            <div class="input-group no-border">
+              <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+          </form> 
+
+          <form [formGroup]="addForm" (ngSubmit)="recordAdd()" class="">
+          <div class="row">
+              <div class="col-md-2 pr-1">
+                <div class="form-group">
+                  <label for="vehicle_id" class="control-label required">Vehicle</label>
+                  <ng-select class="form-control" id="vehicle_id" formControlName="vehicle_id" 
+                    [items]="vehicleOptions"
+                    bindLabel="text"
+                    [virtualScroll]="true"
+                    bindValue="id">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-md-4 px-1">
+                <div class="form-group">
+                  <label for="pmt_route_id" class="control-label required">Route</label>
+                  <ng-select class="form-control" id="pmt_route_id" formControlName="pmt_route_id"
+                    [items]="pmtRouteOptions"
+                    bindLabel="text"
+                    [virtualScroll]="true"
+                    bindValue="id">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label for="departure_date" class="control-label required">Route</label>
+                  <input type="date" class="form-control" id="departure_date" formControlName="departure_date">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label for="is_reservable" class="control-label required">Reservable?</label>
+                  <select class="form-control" formControlName="is_reservable" required>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
+                    </select>                    
+                  </div>
+              </div>
+              <div class="col-md-1 pl-1">
+               <button type="submit" [disabled]="!addForm.valid" rel="tooltip" title="New Record" class="btn btn-success">
+                  <i class="now-ui-icons ui-1_simple-add"></i> 
+                </button>
+              </div>
+          </div>
+        </form>
+
+          <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+            <table class="table table-condensed table-responsive-sm">
+              <thead class="text-primary">
+              <tr>
+                <th class="text-left">SN</th>
+                <th>Vehicle</th>
+                <th>Route</th>
+                <th>Departure</th>
+                <th>Status</th>
+                <th>Reservable</th>
+                <th class="text-right">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let record of currentRecords; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ record.vehicle_id?.name }}</td>
+                <td>{{ record.pmt_route_id?.name }}</td>
+                <td>{{ record.departure_date | date }}</td>
+                <td>{{ record.schedule_status }}</td>
+                <td>{{ record.is_reservable }}</td>
+    
+                <td class="td-actions text-right">
+                    <button type="button" (click)="recordEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" (click)="recordDelete(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Schedule - Tomorrow</h4>
+          <p class="category"> Upcoming schedules</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th class="text-left">SN</th>
+                <th>Vehicle</th>
+                <th>Route</th>
+                <th>Departure</th>
+                <th>Status</th>
+                <th>Reservable</th>
+                <th class="text-right">Action</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>0011</td>
+                  <td>Enugu, Oldpark => Nsukka, Enugu Rd.</td>
+                  <td>2019-05-23 13:30</td>
+                  <td>Queueing</td>
+                  <td>Yes</td>
+                  <td> </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>3011</td>
+                  <td>Nsukka, Enugu Rd. => Port Harcourt</td>
+                  <td>2019-05-23 13:30</td>
+                  <td>Queueing</td>
+                  <td>Yes</td>
+                  <td> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

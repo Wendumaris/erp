@@ -2,22 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  formLoginHeight: string;
+
+export class LoginComponent implements OnInit  {
+  form = 'login';
   loginForm: FormGroup;
 
   constructor(private router: Router,
     private authSerive: AuthService) { }
 
   ngOnInit() {
-    this.formLoginHeight = `calc(50vh - ${+document.getElementById('login-row').clientHeight / 2}px)`;
     this.initialSelectFields();
   }
 
@@ -51,12 +50,14 @@ export class LoginComponent implements OnInit {
         return null;
     }
 
+  toggleForm() {
+    this.form = this.form === 'login' ? 'register' : 'login';
+  }
+
   async onSubmit() {
       if (this.loginForm.valid) {
-        const currentElm = $('button.hovering.ld-over');
-        currentElm.addClass('running');
         const payload = this.loginForm.value;
-        await this.authSerive.postLogin(payload, currentElm);
+        await this.authSerive.postLogin(payload);
       } else {
         this.loginForm.controls.email.markAsTouched();
         this.loginForm.controls.password.markAsTouched();

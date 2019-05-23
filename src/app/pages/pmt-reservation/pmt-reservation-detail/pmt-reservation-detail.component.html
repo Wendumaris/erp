@@ -1,0 +1,35 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">PMT Reservation Detail</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"><th>Property</th><th>Value</th></thead>
+                  <tbody>
+                  <tr><th>Transaction Code</th><td>{{ record?.transaction_code || '' }}</td></tr>
+                  <tr><th>Flutterwave Transaction</th><td>{{ record?.flutterwave_transaction || '' }}</td></tr>
+                  <tr><th>Customer</th><td>{{ getName(record.customer_id) || '' }}</td></tr>
+                  <tr><th>Schedule</th><td>{{ record.pmt_schedule_id?.departure_date || '' }}</td></tr>
+                  <tr><th>Route</th><td>{{ record.pmt_route_id?.name || '' }}</td></tr>
+                  <tr><th>Seat Quantity</th><td>{{ record.seat_quantity || '' }}</td></tr>
+                  <tr><th>Seat Positions</th><td>{{ record.positions || '' }}</td></tr>
+                  <tr><th>Payment Method</th><td>{{ record.payment_method || '' }}</td></tr>
+                  <tr><th>Payment Gateway</th><td>{{ record.payment_gateway || '' }}</td></tr>
+                  <tr><th>Payment Status</th><td>{{ record.payment_status || '' }}</td></tr>
+                  <tr><th>Description</th><td>{{ record.description || '' }}</td></tr>
+                  <tr><th>Reservation Status</th><td>{{ record.reservation_status || '' }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

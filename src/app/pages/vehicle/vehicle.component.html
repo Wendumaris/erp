@@ -1,0 +1,57 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> PMT Vehicle</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+              <div class="input-group no-border">
+                <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                  </div>
+                </div>
+              </div>
+            </form> 
+            <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+              <table class="table table-condensed table-responsive-sm rounded">
+                <thead class="text-primary">
+                  <th class="text-left">SN</th>
+                  <th>Current Driver</th>
+                  <th>Serial</th>
+                  <th>Plate</th>
+                  <th>Type</th>
+                  <th>Class</th>
+                  <th>DTO?</th>
+                  <th class="text-right">Action</th>
+                </thead>
+                <tbody>
+                <tr  *ngFor="let record of currentRecords; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td><a routerLink="/driver/detail/{{record.current_driver_id?.id}}">{{ record.current_driver_id ? getName(record.current_driver_id) : "" }}</a></td>
+                  <td><a routerLink="/vehicle/detail/{{record.id}}">{{ record.name }}</a></td>
+                  <td>{{ record.plate_number }}</td>
+                  <td>{{ record.vehicle_type }}</td>
+                  <td>{{ record.vehicle_class }}</td>
+                  <td>{{ record.is_dto }}</td>
+                  <td class="td-actions text-right">
+                    <button type="button" (click)="goToDetail(record)" rel="tooltip" title="Schedules" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Schedules">
+                      <i class="now-ui-icons transportation_bus-front-12"></i>
+                    </button>
+                  </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

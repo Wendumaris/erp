@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
-// import { ToastrService } from 'ngx-toastr';
 import { getLocalStorage } from '../helpers';
 
 @Injectable({
@@ -11,7 +10,7 @@ import { getLocalStorage } from '../helpers';
 export class JwtInterceptor  implements HttpInterceptor {
   toastr: any;
   constructor(
-    // private toastr: ToastrService
+    // public dialog: MatDialog
     ) { }
 
   // Intercepts all HTTP requests!
@@ -31,15 +30,5 @@ export class JwtInterceptor  implements HttpInterceptor {
     }
     return next.handle(request);
   }
-/*
-  showNotification(message, align= 'left') {
-    this.toastr.show(`<span class="now-ui-icons ui-1_bell-53"></span> ERROR <b>${message}</b>`, '', {
-        timeOut: 8000,
-        closeButton: true,
-        enableHtml: true,
-        toastClass: 'alert alert-primary alert-with-icon',
-        positionClass: `toast-button-${align}`,
-      });
-    }
-*/
+
 }

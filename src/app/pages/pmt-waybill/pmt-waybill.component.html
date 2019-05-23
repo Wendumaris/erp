@@ -1,0 +1,128 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Waybill - Boarding</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="searchForm" (keyup.enter)="search(searchForm.value)">            
+            <div class="input-group no-border">
+              <input type="text" formControlName="searchString" class="form-control"  placeholder="Search..." >
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+          </form> 
+          <div class="pull-right">
+              <button type="button" (click)="goToAdd(record)" rel="tooltip" title="New Record" class="btn btn-success btn-round btn-sm">
+                  <i class="now-ui-icons ui-1_simple-add"></i> 
+                </button>
+          </div>
+          <div class="table-responsive"   *ngIf="currentRecords.length > 0">
+            <table class="table table-condensed table-responsive-sm">
+              <thead class="text-primary">
+              <tr>
+                <th class="text-left">SN</th>
+                <th>Driver</th>
+                <th>Vehicle</th>
+                <th>Route</th>
+                <th>Fare Total</th>
+                <th>Fuel Amount</th>
+                <th>Driver Allowance</th>
+                <th>Is_DTO</th>
+                <th>DTO Maintenance</th>
+                <th>DTO Repayment</th>
+                <th>DTO Service Charge</th>
+                <th>Departure</th>
+                <th>Boarding</th>
+                <th class="text-right">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let record of currentRecords; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ getName(record.driver_id) }}</td>
+                <td>{{ record.vehicle_id?.name }}</td>
+                <td>{{ record.pmt_route_id?.name }}</td>
+                <td>{{ record.fare_total | currency }}</td>
+                <td>{{ record.fuel_amount | currency }}</td>
+                <td>{{ record.driver_allowance | currency }}</td>
+                <td>{{ record.is_dto }}</td>
+                <td>{{ record.dto_maintenance | currency }}</td>
+                <td>{{ record.dto_repayment | currency }}</td>
+                <td>{{ record.dto_service_charge | currency }}</td>
+                <td>{{ record.departure_date | date}}</td>
+                <td>{{ record.boarding_status }}[{{ record.pmt_boarding_ids?.length }}]</td>
+
+                <td class="td-actions text-right">
+                    <button type="button" routerLink="/pmt-waybill/detail/{{record.id}}" rel="tooltip" title="View Detail" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="View Detail">
+                      <i class="now-ui-icons travel_info"></i>
+                    </button>
+                    <button type="button" (click)="goToEdit(record)" rel="tooltip" title="Edit Record" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Record">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" (click)="removeRecord(record)" rel="tooltip" title="Remove" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header">
+          <h4 class="card-title"> PMT Waybill Closed</h4>
+          <p class="category"> Closed transaction for Waybill opened today</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                  <th class="text-left">SN</th>
+                  <th>Driver</th>
+                  <th>Vehicle</th>
+                  <th>Route</th>
+                  <th>Fare Total</th>
+                  <th>Fuel Amount</th>
+                  <th>Driver Allowance</th>
+                  <th>Is_DTO</th>
+                  <th>DTO Maintenance</th>
+                  <th>DTO Repayment</th>
+                  <th>DTO Service Charge</th>
+                  <th>Departure</th>
+                  <th>Boarding</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Mike Rice</td>
+                  <td>1240</td>
+                  <td>Enugu, Okpara Ave. => Onitsha, Awka Rd.</td>
+                  <td>1000</td>
+                  <td>3500</td>
+                  <td>2000</td>
+                  <td>YES</td>
+                  <td>1200</td>
+                  <td>900</td>
+                  <td>600</td>
+                  <td>2019-05-21 2:30</td>
+                  <td>Close [16]</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

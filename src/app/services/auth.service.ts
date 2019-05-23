@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { AlertComponent } from './../shared';
 import { EnvService } from './env.service';
 import { LoginResponse } from '../models';
 import { getLocalStorage, setLocalStorage, removeLocalStorage } from '../helpers';
-
-import { MatDialog } from '@angular/material';
-import { AlertComponent } from './../shared';
  
 
 @Injectable({
@@ -41,12 +39,11 @@ export class AuthService {
     return obj;
   }
 
-  async postLogin(data, element): Promise<LoginResponse> {
+  async postLogin(data): Promise<LoginResponse> {
     const payload = this.cleanObject(data);
     console.log('auth.service: payload =>', payload);
     const response = this.http.post(this.env.API_URL + '/staff/login', payload)
     .pipe(tap((res: LoginResponse) => {
-      element.removeClass('running');
         console.log('auth.service: res =>', res);
       if (res.success) {
         this.timedAlert('Login successful', 'Welcome! PMT Terminal Admin');

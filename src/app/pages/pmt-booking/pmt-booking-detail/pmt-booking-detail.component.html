@@ -1,0 +1,30 @@
+<div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">PmtBooking Detail</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-primary"><th>Property</th><th>Value</th></thead>
+                  <tbody>
+                  <tr><th>Transaction Date</th><td>{{ record?.transaction_date || '' }}</td></tr>
+                  <tr><th>Transaction Code</th><td>{{ record?.transaction_code || '' }}</td></tr>
+                  <tr><th>Teller</th><td>{{ record?.teller || '' }}</td></tr>
+                  <tr><th>Amount Realized</th><td>{{ record?.amount_realized || '' }}</td></tr>
+                  <tr><th>Amount Deposited</th><td>{{ record?.amount_deposited || '' }}</td></tr>
+                  <tr><th>Depositor</th><td>{{ record?.depositor_id.surname || '' }}</td></tr>
+                  <tr><th>Depositor's phone</th><td>{{ record?.depositor_id.phone || '' }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
